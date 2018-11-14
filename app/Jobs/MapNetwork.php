@@ -2,7 +2,9 @@
 
 namespace App\Jobs;
 
+use App\Host;
 use Illuminate\Bus\Queueable;
+use Illuminate\Support\Collection;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -21,7 +23,7 @@ class MapNetwork implements ShouldQueue
     {
         $hosts = $this->getAvailableHosts();
 
-        dd($hosts);
+        $this->logHosts($hosts);
     }
 
     /**
@@ -29,7 +31,7 @@ class MapNetwork implements ShouldQueue
      *
      * @return \Illuminate\Support\Collection
      */
-    private function getAvailableHosts()
+    private function getAvailableHosts(): Collection
     {
         $scan = shell_exec('sudo $(which nmap) -sn ' . config('home.targets'));
         $collection = collect(explode(PHP_EOL, $scan));
@@ -45,5 +47,23 @@ class MapNetwork implements ShouldQueue
                 'vendor'     => $vendor[1],
             ];
         })->unique('macAddress');
+    }
+
+    /**
+     * Log the hosts availabilty.
+     *
+     * @param  \Illuminate\Support\Collection  $hosts
+     * @return void
+     */
+    private function logHosts(Collection $hosts)
+    {
+        $hosts->each(function (
+            $item,
+            $key
+        ) {
+            $host = Host::firstOrCreate($item);
+
+            $host->logs()->create();
+        });
     }
 }
