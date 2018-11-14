@@ -6,9 +6,11 @@
   - Mbstring PHP Extension
   - Tokenizer PHP Extension
   - XML PHP Extension
+  - Safe mode disabled
 - Composer
 - Redis
 - MySQL
+- Nmap (privileged via sudo)
 
 Directories within the `storage` and the `bootstrap/cache` directories should be writable by your web server.
 
