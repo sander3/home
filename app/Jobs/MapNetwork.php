@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Host;
 use Illuminate\Bus\Queueable;
+use App\Events\Host\HostFound;
 use Illuminate\Support\Collection;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -23,7 +24,7 @@ class MapNetwork implements ShouldQueue
     {
         $hosts = $this->getAvailableHosts();
 
-        $this->logHosts($hosts);
+        $this->storeHosts($hosts);
     }
 
     /**
@@ -50,12 +51,12 @@ class MapNetwork implements ShouldQueue
     }
 
     /**
-     * Log the hosts availabilty.
+     * Store the hosts.
      *
      * @param  \Illuminate\Support\Collection  $hosts
      * @return void
      */
-    private function logHosts(Collection $hosts)
+    private function storeHosts(Collection $hosts)
     {
         $hosts->each(function (
             $item,
@@ -63,7 +64,7 @@ class MapNetwork implements ShouldQueue
         ) {
             $host = Host::firstOrCreate($item);
 
-            $host->logs()->create();
+            event(new HostFound($host));
         });
     }
 }
