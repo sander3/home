@@ -26,6 +26,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->job(new MapNetwork)->everyMinute()->withoutOverlapping();
+
+        $schedule->command('telescope:prune')->daily();
     }
 
     /**
