@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "57e7016ca0abb515718c56ee2dfafd79",
+    "content-hash": "22d7d772ec965da33aa80023e2086064",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -862,6 +862,61 @@
             ],
             "description": "Highlight PHP code in terminal",
             "time": "2018-09-29T18:48:56+00:00"
+        },
+        {
+            "name": "laravel-notification-channels/pushover",
+            "version": "1.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-notification-channels/pushover.git",
+                "reference": "d305a75d87c068aa0c640c36a1b698e0566fb333"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-notification-channels/pushover/zipball/d305a75d87c068aa0c640c36a1b698e0566fb333",
+                "reference": "d305a75d87c068aa0c640c36a1b698e0566fb333",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.2",
+                "illuminate/notifications": "5.3.*|5.4.*|5.5.*|5.6.*|5.7.*",
+                "illuminate/support": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*",
+                "nesbot/carbon": "^1.21",
+                "php": ">=5.6.4"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.5",
+                "orchestra/testbench": "~3.3|~3.4",
+                "phpunit/phpunit": "~4.4"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "NotificationChannels\\Pushover\\PushoverServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "NotificationChannels\\Pushover\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Casper Boone",
+                    "email": "mail@casperboone.nl",
+                    "homepage": "https://casperboone.nl",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Pushover notifications for Laravel.",
+            "homepage": "https://github.com/laravel-notification-channels/pushover",
+            "time": "2018-09-23T14:16:31+00:00"
         },
         {
             "name": "laravel/framework",

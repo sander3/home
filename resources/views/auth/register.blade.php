@@ -39,6 +39,20 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="pushover_key" class="col-md-4 col-form-label text-md-right">{{ __('Pushover Key') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="pushover_key" type="text" class="form-control{{ $errors->has('pushover_key') ? ' is-invalid' : '' }}" name="pushover_key" value="{{ old('pushover_key') }}" required autofocus>
+
+                                @if ($errors->has('pushover_key'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('pushover_key') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
