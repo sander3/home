@@ -15,6 +15,7 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         'App\Events\Host\HostFound' => [
             'App\Listeners\Host\LogFoundHost',
+            'App\Listeners\Host\SendNewHostFoundNotification',
         ],
     ];
 

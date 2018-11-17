@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Notifications\Notification;
 use Soved\Laravel\Magic\Auth\Traits\CanMagicallyLogin;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Soved\Laravel\Magic\Auth\Contracts\CanMagicallyLogin as CanMagicallyLoginContract;
@@ -38,10 +37,9 @@ class User extends Authenticatable implements CanMagicallyLoginContract
     /**
      * Route notifications for the Pushover channel.
      *
-     * @param  \Illuminate\Notifications\Notification  $notification
      * @return string
      */
-    public function routeNotificationForPushover(Notification $notification)
+    public function routeNotificationForPushover()
     {
         return $this->pushover_key;
     }
