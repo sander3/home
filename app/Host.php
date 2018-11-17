@@ -23,4 +23,14 @@ class Host extends Model
     {
         return $this->hasMany('App\HostLog');
     }
+
+    /**
+     * Get a string representation of the host.
+     *
+     * @return string
+     */
+    public function toString()
+    {
+        return $this->macAddress . PHP_EOL . $this->vendor;
+    }
 }
