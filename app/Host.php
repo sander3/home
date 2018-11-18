@@ -17,6 +17,14 @@ class Host extends Model
     ];
 
     /**
+     * Get the user that owns the host.
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    /**
      * Get the logs for the host.
      */
     public function logs()
