@@ -35,6 +35,14 @@ class User extends Authenticatable implements CanMagicallyLoginContract
     ];
 
     /**
+     * Get the hosts for the user.
+     */
+    public function hosts()
+    {
+        return $this->hasMany('App\Host');
+    }
+
+    /**
      * Route notifications for the Pushover channel.
      *
      * @return string
